@@ -30,3 +30,9 @@
 *.exe
 *.out
 *.app
+
+# Assembly
+*.s
+
+# Any C code for testing
+*.c
