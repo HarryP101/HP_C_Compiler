@@ -3,12 +3,12 @@
 #include <sstream>
 #include <vector>
 #include <fstream>
-#include <iostream>
 #include <regex>
 
 using namespace hp_compiler;
 
-const std::vector<Lexer::Token> Lexer::m_acceptedTokens = {"[{]", "[}]"};
+const std::vector<Lexer::Token> Lexer::m_acceptedTokens =
+ {"[{]", "[}]", "[\\(]", "[\\)]", "[;]", "int", "return", "[a-zA-Z]\\w*", "[0-9]+"};
 
 std::vector<Lexer::Token> Lexer::Lex(const std::string& filename)
 {

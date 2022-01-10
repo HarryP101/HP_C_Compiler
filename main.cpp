@@ -2,6 +2,7 @@
 #include <vector>
 
 #include "lexer.h"
+#include "parser.h"
 
 int main() {
 
@@ -9,6 +10,7 @@ int main() {
 
     for (const auto v : results)
     {
-        std::cout << v << std::endl;
+        std::cout << v << " ";
     }
+    std::cout << "\n";
 }
