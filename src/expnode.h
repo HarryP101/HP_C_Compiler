@@ -11,6 +11,6 @@ public:
     ExpNode(unsigned int value);
     virtual std::vector<std::shared_ptr<ASTNode>> Children();
 private:
-    m_value;
+    unsigned int m_value;
 };
 }

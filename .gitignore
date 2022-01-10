@@ -36,3 +36,6 @@
 
 # Any C code for testing
 *.c
+
+# VS code settings
+*.vscode
