@@ -4,13 +4,22 @@
 #include "lexer.h"
 #include "parser.h"
 
-int main() {
+int main(int argc, char *argv[]) {
 
-    std::vector<hp_compiler::Lexer::Token> results = hp_compiler::Lexer::Lex("return_2.c");
+    if (argc < 2)
+    {
+        std::cerr << "Not enough input arguments supplied" << std::endl;
+        return 0;
+    }
 
-    for (const auto v : results)
+    std::string fileToCompile = argv[1];
+    std::vector<hp_compiler::Lexer::Token> tokens = hp_compiler::Lexer::Lex(fileToCompile);
+
+    for (const auto v : tokens)
     {
         std::cout << v << " ";
     }
+
+    hp_compiler::Parser::GetRoot(tokens);
     std::cout << "\n";
 }

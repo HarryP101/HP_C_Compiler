@@ -1,3 +1,4 @@
+#pragma once
 #include "astnode.h"
 #include <vector>
 #include <memory>
