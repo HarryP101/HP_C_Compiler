@@ -17,7 +17,7 @@ int main(int argc, char *argv[]) {
 
     while (!tokens.empty())
     {
-        std::cout << tokens.front() << std::endl;
+        std::cout << tokens.front() << " ";
         tokens.pop();
     }
 

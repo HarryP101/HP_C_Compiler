@@ -1,6 +1,7 @@
 #include "lexer.h"
 #include <string>
 #include <sstream>
+#include <iostream>
 #include <vector>
 #include <queue>
 #include <fstream>
@@ -22,14 +23,23 @@ std::queue<Lexer::Token> Lexer::Lex(const std::string& filename)
 
     std::string file = fileStr.str();
 
-    std::smatch m;
+    std::string regexStr = "(";
     for (const auto& token : m_acceptedTokens)
     {
-        std::regex regexp(token);
+        regexStr += token + "|";       
+    }
+    regexStr.erase(regexStr.length()-1);
+    regexStr += ")";
 
-        regex_search(file, m, regexp);
+    std::regex regexWord(regexStr);
+    auto wordsBegin = std::sregex_iterator(file.begin(), file.end(), regexWord);
+    auto wordsEnd = std::sregex_iterator();
 
-        result.push(m.str());
+    for (auto it = wordsBegin; it != wordsEnd; ++it)
+    {
+        std::smatch match = *it;
+        std::string matchStr = match.str();
+        result.push(matchStr);
     }
 
     return result;
