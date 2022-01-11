@@ -13,12 +13,14 @@ int main(int argc, char *argv[]) {
     }
 
     std::string fileToCompile = argv[1];
-    std::vector<hp_compiler::Lexer::Token> tokens = hp_compiler::Lexer::Lex(fileToCompile);
+    std::queue<hp_compiler::Lexer::Token> tokens = hp_compiler::Lexer::Lex(fileToCompile);
 
-    for (const auto v : tokens)
+    while (!tokens.empty())
     {
-        std::cout << v << " ";
+        std::cout << tokens.front() << std::endl;
+        tokens.pop();
     }
+
 
     hp_compiler::Parser::GetRoot(tokens);
     std::cout << "\n";
