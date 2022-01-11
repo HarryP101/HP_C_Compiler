@@ -21,6 +21,10 @@ int main(int argc, char *argv[]) {
         tokens.pop();
     }
 
+    tokens.push("2");
+
+    hp_compiler::ExpNode::ExpNodePtr value = hp_compiler::Parser::ParseExp(tokens);
+    std::cout << value->GetValue() << std::endl;
 
     hp_compiler::Parser::GetRoot(tokens);
     std::cout << "\n";
